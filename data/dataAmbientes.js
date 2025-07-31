@@ -1,0 +1,62 @@
+export default data = [
+  {
+    imgPath: require('../assets/tema_1.png'),
+    screen: 'AmbientesSplash',
+    screenAmbiente: 'AgriHome',
+    screenSplashAmbiente: 'AgriSplash',
+    ambienteId: '1',
+    arrayPasos: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    imgCert0: require('../assets/agricert0.png'),
+    imgCert100: require('../assets/agricert100.png'),
+    nombreAmbiente:'Agricultores',
+  },
+
+  {
+    imgPath: require('../assets/tema_2.png'),
+    screen: 'AmbientesSplash',
+    screenAmbiente: 'AbejasHome',
+    screenSplashAmbiente: 'AgriSplash',
+    ambienteId: '2',
+    arrayPasos: [1, 2, 3, 4, 5, 6, 7],
+    imgCert0: require('../assets/abejascert0.png'),
+    imgCert100: require('../assets/abejascert100.png'),
+    nombreAmbiente:'Abejas'
+  },
+
+  {
+    imgPath: require('../assets/tema_3.png'),
+    screen: 'AmbientesSplash',
+    screenAmbiente: 'AcuaticosHome',
+    screenSplashAmbiente: 'AgriSplash',
+    ambienteId: '3',
+    arrayPasos: [1, 2, 3, 4, 5, 6],
+    imgCert0: require('../assets/acuaticoscert0.png'),
+    imgCert100: require('../assets/acuaticoscert100.png'),
+    nombreAmbiente:'Organismos Acuáticos',
+  },
+
+  {
+    imgPath: require('../assets/tema_4.png'),
+    screen: 'AmbientesSplash',
+    screenAmbiente: 'AvesHome',
+    // screenAmbiente: 'AcuaticosHome',
+    screenSplashAmbiente: 'AgriSplash',
+    ambienteId: '4',
+    arrayPasos: [1, 2, 3, 4, 5],
+    imgCert0: require('../assets/avescert0.png'),
+    imgCert100: require('../assets/avescert100.png'),
+    nombreAmbiente:'Aves',
+  },
+  {
+    imgPath: require('../assets/tema_5.png'),
+    screen: 'AmbientesSplash',
+    screenAmbiente: 'TranspHome',
+    // screenAmbiente: 'AcuaticosHome',
+    screenSplashAmbiente: 'AgriSplash',
+    ambienteId: '5',
+    arrayPasos: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    imgCert0: require('../assets/transpcert0.png'),
+    imgCert100: require('../assets/transpcert100.png'),
+    nombreAmbiente:'Transportadores y distribuidores',
+  },
+];
