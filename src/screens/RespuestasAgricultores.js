@@ -1,5 +1,5 @@
 import * as ScreenOrientation from 'expo-screen-orientation';
-import React from 'react';
+import { useEffect } from 'react';
 import {
   BackHandler,
   ImageBackground,
@@ -19,6 +19,7 @@ import BannerPreguntas from '../components/BannerPreguntas';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Pressable } from 'react-native';
 import data from '../../data/dataProgreso';
+import SafeAreaWrapper from '../components/SafeAreaWrapper';
 
 export default function RespuestasAgricultores(props) {
   // const [isLoading, setIsLoading] = React.useState(true);
@@ -46,7 +47,7 @@ export default function RespuestasAgricultores(props) {
   //   return () => backHandler.remove();
   // }, [props]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const backAction = () => {
       props.navigation.navigate('Perfil');
     };
@@ -74,155 +75,157 @@ export default function RespuestasAgricultores(props) {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaWrapper backgroundColor="#ffffff">
+      <SafeAreaView style={styles.container}>
 
-      <BannerPreguntas ambiente={props.nombreAmbiente} />
-      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-        {/* <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {props.indexArrayPasos > 0 ? (
-            <TouchableOpacity
-              onPress={() =>
-                props.setIndexArrayPasos(props.indexArrayPasos - 1)
-              }>
-              <FontAwesome
-                name="chevron-left"
-                size={wp('10%')}
-                color="#20397e"
-              />
-            </TouchableOpacity>
-          ) : null}
-        </View> */}
+        <BannerPreguntas ambiente={props.nombreAmbiente} />
+        <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+          {/* <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {props.indexArrayPasos > 0 ? (
+              <TouchableOpacity
+                onPress={() =>
+                  props.setIndexArrayPasos(props.indexArrayPasos - 1)
+                }>
+                <FontAwesome
+                  name="chevron-left"
+                  size={wp('10%')}
+                  color="#20397e"
+                />
+              </TouchableOpacity>
+            ) : null}
+          </View> */}
 
-        <View style={{width: '65%'}}>
+          <View style={{width: '65%'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: hp('3%'),
+              }}>
+              <View style={styles.horizontalLine} />
+            </View>
+
+            <View style={styles.subtitulo}>
+              <Text style={styles.subtituloText}>Respuestas</Text>
+            </View>
+
+            <View style={styles.subtitulo}>
+              <Text style={styles.enunciado}>
+                A continuación la calificación de los últimos tests
+                presentados de la temática "{props.nombreAmbiente}
+                ".
+              </Text>
+            </View>
+
+            <ScrollView
+              contentContainerStyle={{alignItems: 'center'}}
+              persistentScrollbar={true}
+              style={{
+                height: '50%',
+                width: '80%',
+                // flexDirection: 'row',
+                marginLeft: wp('6%'),
+              }}>
+              <View
+                style={{
+                  height: '50%',
+                  width: '100%',
+                  flexDirection: 'row',
+                  padding: wp('1%'),
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                }}>
+                {props.cuestionario.map(
+                  (respuesta, index) => {
+                    return (
+                      <Pressable key={index}>
+                        <View style={{alignItems: 'center'}} key={index}>
+                          <View
+                            key={index}
+                            style={{
+                              width: wp('20%'),
+                              height: wp('20%'),
+                              padding: wp('2%'),
+                              marginHorizontal: wp('1%'),
+                            }}>
+                            <ImageBackground
+                              source={
+                                respuesta.calificacion>=80
+                                  ? imgRespuesta[1]
+                                  : imgRespuesta[0]
+                              }
+                              style={{flex: 1, resizeMode: 'contain'}}
+                            />
+                          </View>
+                          <Text style={styles.preguntaTexto}>
+                            Pregunta {index + 1}
+                          </Text>
+                        </View>
+                      </Pressable>
+                    );
+                  },
+                )}
+              </View>
+            </ScrollView>
+          </View>
+
           <View
             style={{
-              flexDirection: 'row',
+              width: '20%',
               alignItems: 'center',
-              marginTop: hp('3%'),
-            }}>
-            <View style={styles.horizontalLine} />
-          </View>
-
-          <View style={styles.subtitulo}>
-            <Text style={styles.subtituloText}>Respuestas</Text>
-          </View>
-
-          <View style={styles.subtitulo}>
-            <Text style={styles.enunciado}>
-              A continuación la calificación de los últimos tests
-              presentados de la temática "{props.nombreAmbiente}
-              ".
-            </Text>
-          </View>
-
-          <ScrollView
-            contentContainerStyle={{alignItems: 'center'}}
-            persistentScrollbar={true}
-            style={{
-              height: '50%',
-              width: '80%',
-              // flexDirection: 'row',
-              marginLeft: wp('6%'),
             }}>
             <View
               style={{
-                height: '50%',
-                width: '100%',
-                flexDirection: 'row',
-                padding: wp('1%'),
-                flexWrap: 'wrap',
-                alignItems: 'center',
+                width: wp('30%'),
+                height: wp('65%'),
+                marginTop: hp('2%'),
               }}>
-              {props.cuestionario.map(
-                (respuesta, index) => {
-                  return (
-                    <Pressable key={index}>
-                      <View style={{alignItems: 'center'}} key={index}>
-                        <View
-                          key={index}
-                          style={{
-                            width: wp('20%'),
-                            height: wp('20%'),
-                            padding: wp('2%'),
-                            marginHorizontal: wp('1%'),
-                          }}>
-                          <ImageBackground
-                            source={
-                              respuesta.calificacion>=80
-                                ? imgRespuesta[1]
-                                : imgRespuesta[0]
-                            }
-                            style={{flex: 1, resizeMode: 'contain'}}
-                          />
-                        </View>
-                        <Text style={styles.preguntaTexto}>
-                          Pregunta {index + 1}
-                        </Text>
-                      </View>
-                    </Pressable>
-                  );
-                },
-              )}
+              <ImageBackground
+                style={{
+                  flex: 1,
+                  resizeMode: 'contain',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  marginBottom: hp('1%'),
+                }}
+                source={data[0].imgPathCompleto}>
+                <Text numberOfLines={1} style={styles.calificacion}>
+                  {props.calificacionTest} %
+                </Text>
+                <Text style={styles.nombreAmbiente}>{props.nombreAmbiente}</Text>
+              </ImageBackground>
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate('Perfil')}>
+                <LinearGradient
+                  style={styles.button}
+                  colors={['#20397e', '#030b4b']}
+                  start={{x: 0.5, y: 0.3}}>
+                  <Text style={styles.buttonText}>Ir al perfil</Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
-          </ScrollView>
-        </View>
-
-        <View
-          style={{
-            width: '20%',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              width: wp('30%'),
-              height: wp('65%'),
-              marginTop: hp('2%'),
-            }}>
-            <ImageBackground
-              style={{
-                flex: 1,
-                resizeMode: 'contain',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-                marginBottom: hp('1%'),
-              }}
-              source={data[0].imgPathCompleto}>
-              <Text numberOfLines={1} style={styles.calificacion}>
-                {props.calificacionTest} %
-              </Text>
-              <Text style={styles.nombreAmbiente}>{props.nombreAmbiente}</Text>
-            </ImageBackground>
-            <TouchableOpacity
-              onPress={() => props.navigation.navigate('Perfil')}>
-              <LinearGradient
-                style={styles.button}
-                colors={['#20397e', '#030b4b']}
-                start={{x: 0.5, y: 0.3}}>
-                <Text style={styles.buttonText}>Ir al perfil</Text>
-              </LinearGradient>
-            </TouchableOpacity>
           </View>
+          {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            {props.indexArrayPasos == props.tamaño - 1 ? null : (
+              <TouchableOpacity
+                onPress={() =>
+                  props.setIndexArrayPasos(props.indexArrayPasos + 1)
+                }>
+                <FontAwesome
+                  name="chevron-right"
+                  size={wp('10%')}
+                  color="#20397e"
+                />
+              </TouchableOpacity>
+            )}
+          </View> */}
         </View>
-        {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          {props.indexArrayPasos == props.tamaño - 1 ? null : (
-            <TouchableOpacity
-              onPress={() =>
-                props.setIndexArrayPasos(props.indexArrayPasos + 1)
-              }>
-              <FontAwesome
-                name="chevron-right"
-                size={wp('10%')}
-                color="#20397e"
-              />
-            </TouchableOpacity>
-          )}
-        </View> */}
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaWrapper>
   );
 }
 

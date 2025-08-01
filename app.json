@@ -17,7 +17,9 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.TobiasAppExpo"
+      "package": "co.com.tmsolutions.segetis.tobias",
+      "versionCode": 20,
+      "versionName": "1.2.0"
     },
     "web": {
       "bundler": "metro",

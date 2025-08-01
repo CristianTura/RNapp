@@ -1,4 +1,4 @@
-package com.anonymous.TobiasAppExpo
+package co.com.tmsolutions.segetis.tobias
 
 import android.app.Application
 import android.content.res.Configuration

@@ -1,4 +1,4 @@
-package com.anonymous.TobiasAppExpo
+package co.com.tmsolutions.segetis.tobias
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
